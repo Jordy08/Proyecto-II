@@ -9,13 +9,21 @@ package pruebacorreo;
  * @author jordi
  */
 public class Person {
+    
     private String name;
     private String gender;
     private String location;
-
+  /**
+   * Tenemos los atributos de la clase persona
+   */
     public Person() {
     }
-
+/**
+ * constructor lleno 
+ * @param name nos indica el nombre que se le va asignar
+ * @param gender nos indica el genero que se le va asignar
+ * @param location nos indica la ubicación que se le va asignar
+ */
     public Person(String name, String gender, String location) {
         this.name = name;
         this.gender = gender;
@@ -23,6 +31,7 @@ public class Person {
     }
 
     /**
+     * Por medio de los getters accedemos al valor del atributo 
      * @return the name
      */
     public String getName() {
@@ -30,6 +39,7 @@ public class Person {
     }
 
     /**
+     * Por medio de los setters nos fijan el valor del atributo
      * @param name the name to set
      */
     public void setName(String name) {
@@ -37,6 +47,7 @@ public class Person {
     }
 
     /**
+     * 
      * @return the gender
      */
     public String getGender() {
@@ -58,12 +69,16 @@ public class Person {
     }
 
     /**
+     * 
      * @param location the location to set
      */
     public void setLocation(String location) {
         this.location = location;
     }
-
+/**
+ * nos permite comprobar la escritura correcta de un metodo
+ * @return 
+ */
     @Override
     public String toString() {
         return "Person{" + "name=" + name + ", gender=" + gender + ", location=" + location + '}';

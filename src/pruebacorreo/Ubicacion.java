@@ -4,6 +4,10 @@
  */
 package pruebacorreo;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 /**
  *
  * @author jordi
@@ -125,10 +129,15 @@ public class Ubicacion extends javax.swing.JFrame {
 
     private void bAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgregarActionPerformed
         // TODO add your handling code here:
-        
+        //Frame abrir = new Frame();
+        //abrir.setVisible(true);
+        //this.setVisible(false); pruebas para ver que tal
         
     }//GEN-LAST:event_bAgregarActionPerformed
-
+/**
+ * 
+ * @param evt Con el boton volver nos permite regresar a la pantalla principal
+ */
     private void bVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVolverActionPerformed
         // TODO add your handling code here:
         Frame abrir = new Frame();
