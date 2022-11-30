@@ -184,7 +184,10 @@ File archivo;
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void bAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgregarActionPerformed
         // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
