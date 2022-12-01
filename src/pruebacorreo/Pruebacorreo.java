@@ -26,7 +26,8 @@ public class Pruebacorreo {
         Frame ven = new Frame();
         ven.setVisible(true);
     }//cierra el main
-    /*private static Student[] nuevoVector(Student student,  int i) { 
+    /*
+    private static Student[] nuevoVector(Student student,  int i) { 
             Student listStudend [] = new Student[i + 1];
             listStudend [i] = student;
             if (i>=1) {

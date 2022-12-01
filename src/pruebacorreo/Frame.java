@@ -58,6 +58,7 @@ public class Frame extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         txaArchivo.setViewportView(jTextArea1);
 
+        bEnviar.setBackground(new java.awt.Color(204, 204, 204));
         bEnviar.setText("Enviar");
         bEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +66,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +74,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
+        bMod.setBackground(new java.awt.Color(204, 204, 204));
         bMod.setText("Modificar");
         bMod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,19 +106,19 @@ public class Frame extends javax.swing.JFrame {
                                 .addComponent(txaArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(bMod)
-                                .addGap(63, 63, 63)
-                                .addComponent(bEnviar)
+                                .addComponent(bMod, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(39, 39, 39)
+                                .addComponent(bEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(17, 17, 17))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(bSel)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18))
             .addGroup(layout.createSequentialGroup()
                 .addGap(134, 134, 134)
@@ -151,62 +154,77 @@ public class Frame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * Le permite dirigirse a la pantalla de seleccionar y enviar el correo
+ * @param evt 
+ */
     private void bEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEnviarActionPerformed
         Correo abrir = new Correo();
         abrir.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bEnviarActionPerformed
-
+/**
+ * Permite seleccionar cualquier archivo por medio del JFileChooser 
+ * @param evt 
+ */
     private void bSelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSelActionPerformed
         // TODO add your handling code here:
         JFileChooser fc = new JFileChooser();
      fc.showOpenDialog(null);
-     File archivo = fc.getSelectedFile();
+     File archive = fc.getSelectedFile();
      try{
-     FileReader fr = new FileReader(archivo);
+     FileReader fr = new FileReader(archive);
      //este bufferedReader nos ayuda para poder leer lineas grandes lines de texto
      BufferedReader br = new BufferedReader(fr);
-     String texto= "";
-     String linea="";
-     while(((linea=br.readLine())!=null)){
-     texto+=linea+"\n";
+     String text= "";
+     String line="";
+     while(((line=br.readLine())!=null)){
+     text+=line+"\n";
      }
      //texto la variable que almaceno todo lo del txt.
-     jTextArea1.setText(texto);
+     jTextArea1.setText(text);
      JOptionPane.showMessageDialog(null,"Archivo leido correctamente");
      }catch(Exception e){
      }
     }//GEN-LAST:event_bSelActionPerformed
-
+/**
+ * Nos permite salir de la aplicación 
+ * @param evt 
+ */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null,"Vuelva pronto");
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+/**
+ * Nos dirige a la pantalla de ubicación 
+ * @param evt 
+ */
     private void bModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModActionPerformed
         // TODO add your handling code here:
-        Ubicacion abrir = new Ubicacion();
-        abrir.setVisible(true);
+        Ubicacion open = new Ubicacion();
+        open.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bModActionPerformed
-
+/**
+ * Permite visualizar el manual de ayuda 
+ * @param evt 
+ */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
        FileReader txt;
-        BufferedReader leer;
+        BufferedReader read;
        
         try {
             txt = new FileReader("C:\\Jordy\\txt\\Manual.txt");
 
             if (txt.ready()) {
-                leer = new BufferedReader(txt);
+                read = new BufferedReader(txt);
                 
                 String cad;
               
-                while((cad=leer.readLine())!=null){
+                while((cad=read.readLine())!=null){
                     System.out.println(cad);
                     
                 }

@@ -54,12 +54,11 @@ File archivo;
         jButton1 = new javax.swing.JButton();
         bAgregar = new javax.swing.JButton();
         bCorreo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        txtRecibe.setText("jTextField1");
-
-        txtAsunto.setText("jTextField2");
 
         txtMensaje.setColumns(20);
         txtMensaje.setRows(5);
@@ -86,6 +85,12 @@ File archivo;
             }
         });
 
+        jLabel1.setText("Correo");
+
+        jLabel2.setText("Asunto");
+
+        jLabel3.setText("Mensaje");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,25 +101,39 @@ File archivo;
                     .addComponent(txtRecibe)
                     .addComponent(txtAsunto)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bCorreo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bAgregar)
+                .addGap(18, 18, 18)
+                .addComponent(bAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                 .addGap(29, 29, 29)
-                .addComponent(jButton1)
-                .addGap(50, 50, 50))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(txtRecibe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRecibe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(29, 29, 29)
-                .addComponent(txtAsunto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAsunto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -126,7 +145,11 @@ File archivo;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    /**
+     * Este boton nos permite enviar el correo con el archivo adjunto a cualquier tipo de correo,
+     * se envía desde un gmail desde java
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         
@@ -142,9 +165,9 @@ File archivo;
         
         
         
-        String correoEnvia="roscoavila0807@gmail.com";
-        String contrasena="ybfrfywygimquvsa";
-        String destinatario= txtRecibe.getText();
+        String sendMail="roscoavila0807@gmail.com";
+        String password="ybfrfywygimquvsa";
+        String addressee= txtRecibe.getText();
         String asunto=txtAsunto.getText();
         String mensaje=txtMensaje.getText();
         
@@ -164,13 +187,13 @@ File archivo;
             m.addBodyPart(texto);
             m.addBodyPart(adjunto);
             
-            mail.setFrom(new InternetAddress(correoEnvia));
-            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
+            mail.setFrom(new InternetAddress(sendMail));
+            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(addressee));
             mail.setSubject(asunto);
             mail.setContent(m);  //mail.setText(mensaje);
             
             Transport transporte = sesion.getTransport("smtp");
-            transporte.connect(correoEnvia,contrasena);
+            transporte.connect(sendMail,password);
             transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
             transporte.close();
             
@@ -185,7 +208,7 @@ File archivo;
         
     }//GEN-LAST:event_jButton1ActionPerformed
 /**
- * 
+ * Permite seleccionar un archivo para adjuntarlo al correo que se desea enviar
  * @param evt 
  */
     private void bAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgregarActionPerformed
@@ -208,7 +231,10 @@ File archivo;
         } catch (Exception e) {
         }*/
     }//GEN-LAST:event_bAgregarActionPerformed
-
+/**
+ * Este boton nos permite regresar a la pantalla principal
+ * @param evt 
+ */
     private void bCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCorreoActionPerformed
 
         Frame abrir = new Frame();
@@ -255,6 +281,9 @@ File archivo;
     private javax.swing.JButton bAgregar;
     private javax.swing.JButton bCorreo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtAsunto;
     private javax.swing.JTextArea txtMensaje;
