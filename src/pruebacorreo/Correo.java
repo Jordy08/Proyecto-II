@@ -148,6 +148,9 @@ File archivo;
     /**
      * Este boton nos permite enviar el correo con el archivo adjunto a cualquier tipo de correo,
      * se envía desde un gmail desde java
+     * 
+     * L.Code. (2022). Enviar correos desde Java|Gmail|2022. https://www.youtube.com/watch?v=ZggjlwLzrxg
+     * Java y Otro. (2021). Enviar correos desde Java | Sin archivos adjuntos y con archivos adjuntos |2021. https://www.youtube.com/watch?v=s5RYPoQTXBg
      * @param evt 
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -190,7 +193,7 @@ File archivo;
             mail.setFrom(new InternetAddress(sendMail));
             mail.addRecipient(Message.RecipientType.TO, new InternetAddress(addressee));
             mail.setSubject(asunto);
-            mail.setContent(m);  //mail.setText(mensaje);
+            mail.setContent(m); 
             
             Transport transporte = sesion.getTransport("smtp");
             transporte.connect(sendMail,password);
